@@ -4,7 +4,7 @@
 .clangd
 .vscode
 .codechecker
-.devcontainer.json
+devcontainer.json
 doc/
 #jetbrains IDEs
 .idea

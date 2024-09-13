@@ -1,0 +1,128 @@
+{
+  "name": "Ubuntu 22.04 - 3Laws dev",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": ".",
+    "args": {
+      "USERID": "${localEnv:USERID}",
+      "GROUPID": "${localEnv:GROUPID}"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "editor.formatOnSave": true,
+        "editor.suggest.showStatusBar": true,
+        "editor.bracketPairColorization.enabled": true,
+        "editor.tabSize": 2,
+        "editor.rulers": [100],
+        "editor.detectIndentation": false,
+        "editor.renderWhitespace": "all",
+        "editor.tabCompletion": "on",
+        "editor.insertSpaces": true,
+        "editor.snippetSuggestions": "top",
+        "files.trimTrailingWhitespace": true,
+        "files.insertFinalNewline": true,
+        "files.trimFinalNewlines": true,
+        "docker.languageserver.formatter.ignoreMultilineInstructions": true,
+        "terminal.integrated.scrollback": 100000,
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "terminal.integrated.enableMultiLinePasteWarning": "never",
+        "terminal.integrated.inheritEnv": false,
+        "[cpp]": {
+          "editor.defaultFormatter": "xaver.clang-format"
+        },
+        "C_Cpp.intelliSenseEngine": "disabled",
+        "C_Cpp.clang_format_style": "/workspaces/software-interview-project/.clang-format",
+        "clangd.restartAfterCrash": true,
+        "clangd.arguments": [
+          "--compile-commands-dir=/workspaces/software-interview-project/build",
+          "--header-insertion=never"
+        ],
+        "[python]": {
+          "editor.codeActionsOnSave": {
+            "source.organizeImports": "explicit"
+          },
+          "editor.tabSize": 4,
+          "editor.formatOnType": true,
+          "editor.defaultFormatter": "ms-python.black-formatter"
+        },
+        "python.analysis.typeCheckingMode": "off",
+        "ruff.lint.args": ["--line-length=100"],
+        "black-formatter.args": ["--verbose", "--line-length", "100"],
+        "[yaml]": {
+          "editor.defaultFormatter": "redhat.vscode-yaml"
+        },
+        "[xml]": {
+          "editor.defaultFormatter": "redhat.vscode-xml"
+        },
+        "[json]": {
+          "editor.quickSuggestions": {
+            "strings": true
+          },
+          "editor.suggest.insertMode": "replace",
+          "editor.defaultFormatter": "esbenp.prettier-vscode"
+        },
+        "[jsonc]": {
+          "editor.defaultFormatter": "esbenp.prettier-vscode"
+        },
+        "[shellscript]": {
+          "editor.defaultFormatter": "foxundermoon.shell-format"
+        },
+        "shellcheck.customArgs": ["-x"],
+        "shellcheck.useWorkspaceRootAsCwd": true,
+        "workbench.iconTheme": "file-icons",
+        "[cmake]": {
+          "editor.defaultFormatter": "cheshirekow.cmake-format"
+        },
+        "cmakeFormat.args": [
+          "--config-files",
+          "/workspaces/software-interview-project/.cmake-format.yaml"
+        ]
+      },
+      "extensions": [
+        "albymor.increment-selection",
+        "anbuselvan.vscode-symlink",
+        "charliermarsh.ruff",
+        "cheshirekow.cmake-format",
+        "cschlosser.doxdocgen",
+        "earshinov.permute-lines",
+        "earshinov.simple-alignment",
+        "esbenp.prettier-vscode",
+        "foxundermoon.shell-format",
+        "Gruntfuggly.todo-tree",
+        "gurumukhi.selected-lines-count",
+        "helixquar.randomeverything",
+        "henriiik.vscode-sort",
+        "josetr.cmake-language-support-vscode",
+        "kevinkyang.auto-comment-blocks",
+        "lizebang.bash-extension-pack",
+        "llvm-vs-code-extensions.vscode-clangd",
+        "ms-azuretools.vscode-docker",
+        "ms-python.black-formatter",
+        "ms-python.isort",
+        "ms-vscode.cmake-tools",
+        "ms-vscode.cpptools",
+        "njpwerner.autodocstring",
+        "redhat.vscode-commons",
+        "redhat.vscode-xml",
+        "redhat.vscode-yaml",
+        "rogalmic.bash-debug",
+        "shakram02.bash-beautify",
+        "shd101wyy.markdown-preview-enhanced",
+        "sleistner.vscode-fileutils",
+        "stackbreak.comment-divider",
+        "streetsidesoftware.code-spell-checker",
+        "timonwong.shellcheck",
+        "tomoki1207.selectline-statusbar",
+        "twxs.cmake",
+        "Tyriar.sort-lines",
+        "vadimcn.vscode-lldb",
+        "wmaurer.change-case",
+        "xaver.clang-format",
+        "yzhang.markdown-all-in-one",
+        "ZainChen.json"
+      ]
+    }
+  }
+}
