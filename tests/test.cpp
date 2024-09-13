@@ -7,4 +7,4 @@
 
 #include <3laws/dynamical_model_abstract_template.hpp>
 
-TEST(Main, test) {}
+TEST(Main, test) { std::cout << "Hello, World!" << std::endl; }

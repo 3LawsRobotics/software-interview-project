@@ -33,6 +33,7 @@ RUN apt-add-repository "deb https://apt.kitware.com/ubuntu/ $(lsb_release -cs) m
 RUN apt-get update && \
     apt-get install -y \
     cmake \
+    cmake-curses-gui \
     dirmngr \
     dotnet-sdk-8.0 \
     git \
@@ -64,6 +65,8 @@ RUN update-alternatives --install /usr/bin/clang-tidy clang-tidy /usr/bin/clang-
 # Set compiler environment variables
 ENV CC="/usr/bin/clang"
 ENV CXX="/usr/bin/clang++"
+ENV CMAKE_GENERATOR="Ninja"
+
 
 
 ## Manage user

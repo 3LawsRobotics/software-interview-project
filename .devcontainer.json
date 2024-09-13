@@ -78,7 +78,8 @@
         "cmakeFormat.args": [
           "--config-files",
           "/workspaces/software-interview-project/.cmake-format.yaml"
-        ]
+        ],
+        "dotnetAcquisitionExtension.sharedExistingDotnetPath": "/usr/bin/dotnet"
       },
       "extensions": [
         "albymor.increment-selection",
