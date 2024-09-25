@@ -104,6 +104,7 @@
         "ms-python.isort",
         "ms-vscode.cmake-tools",
         "ms-vscode.cpptools",
+        "ms-vsliveshare.vsliveshare",
         "njpwerner.autodocstring",
         "redhat.vscode-commons",
         "redhat.vscode-xml",
