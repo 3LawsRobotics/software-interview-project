@@ -72,12 +72,9 @@ ENV CMAKE_GENERATOR="Ninja"
 ## Manage user
 # Options
 ARG USER_NAME=3laws
-ARG USERID
-ARG GROUPID
 
 # Create user
-RUN groupadd --gid $GROUPID $USER_NAME
-RUN useradd --uid $USERID --gid $GROUPID -ms /bin/bash $USER_NAME
+RUN useradd -ms /bin/bash $USER_NAME
 RUN echo "$USER_NAME:$USER_NAME" | chpasswd
 
 # Remove need for password with sudo command
