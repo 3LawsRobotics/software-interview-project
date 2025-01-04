@@ -97,4 +97,4 @@ RUN pip install conan && . ~/.profile && conan && conan profile detect
 
 
 ##  Install misc tools
-RUN pip install black cpplint cmake-format
+RUN pip install black cpplint cmake-format matplotlib
