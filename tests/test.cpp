@@ -18,7 +18,7 @@ void simulate(DynamicalModelAbstractTemplate<Scalar> & model)
   static constexpr double dt = 0.01;
   static constexpr size_t N  = 1000;
   std::vector<Scalar> u;
-  u.assign(model.nu(), 0.0);
+  u.assign(model.nu(), 1.0);
 
   std::vector<Scalar> t;
   t.resize(N, 0.);
