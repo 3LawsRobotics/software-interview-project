@@ -38,6 +38,28 @@ struct DynamicalModelEvaluationResultTemplate
   std::vector<Scalar> dval_du;
 };
 
+/// @brief Initialize dynamical model evaluation result
+/// @details Set nx and nu to specified input values, resize val, dval_dx, and
+/// dval_du accordingly.
+/// @param res DynamicalModelEvaluationResultTemplate object to initialize
+/// @param nx Number of states (must be strictly positive)
+/// @param nu Number of inputs (must be strictly positive)
+/// @param with_failsafe Whether dval_dx and dval_du must be initialized
+template<class Scalar>
+void init(DynamicalModelEvaluationResultTemplate<Scalar> & res,
+  const size_t nx,
+  const size_t nu,
+  const bool with_gradient = false)
+{
+  res.nx = nx;
+  res.nu = nu;
+  res.val.assign(nx, Scalar(0.));
+  if (with_gradient) {
+    res.dval_dx.assign(nx * nx, Scalar(0.));
+    res.dval_du.assign(nx * nu, Scalar(0.));
+  }
+}
+
 /// @brief Dynamical model interface
 /// @details Abstract class for a generic non-linear dynamical model of the form
 /// \f$ \dot{x} = f(x,u) \f$ with \f$ x \in \mathbb{R}^{\text{nx}} \f$ and \f$ u
@@ -78,27 +100,5 @@ public:
   /// @brief Get copy of model
   // virtual unique_ptr get_copy() const = 0;
 };
-
-/// @brief Initialize dynamical model evaluation result
-/// @details Set nx and nu to specified input values, resize val, dval_dx, and
-/// dval_du accordingly.
-/// @param res DynamicalModelEvaluationResultTemplate object to initialize
-/// @param nx Number of states (must be strictly positive)
-/// @param nu Number of inputs (must be strictly positive)
-/// @param with_failsafe Whether dval_dx and dval_du must be initialized
-template<class Scalar>
-void init(DynamicalModelEvaluationResultTemplate<Scalar> & res,
-  const size_t nx,
-  const size_t nu,
-  const bool with_gradient = false)
-{
-  res.nx = nx;
-  res.nu = nu;
-  res.val.assign(nx, Scalar(0.));
-  if (with_gradient) {
-    res.dval_dx.assign(nx * nx, Scalar(0.));
-    res.dval_du.assign(nx * nu, Scalar(0.));
-  }
-}
 
 #endif  // THREELAWS_DYNAMICAL_MODEL_ABSTRACT_TEMPLATE_HPP
