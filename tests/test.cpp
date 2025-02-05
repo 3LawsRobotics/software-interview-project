@@ -5,6 +5,8 @@
 
 #include <gtest/gtest.h>
 
+#include <format>
+
 #include <3laws/dynamical_model_abstract_template.hpp>
 
 #include "./matplotlibcpp.hpp"
@@ -44,8 +46,11 @@ void simulate(DynamicalModelAbstractTemplate<Scalar> & model)
 
   // Plot
   plt::figure();
-  for (size_t i = 0; i < model.nx(); ++i) { plt::plot(t, xList[i]); }
+  for (size_t i = 0; i < model.nx(); ++i) { plt::named_plot(std::format("x[{}]", i), t, xList[i]); }
   plt::grid(true);
+  plt::legend();
+  plt::xlabel("Time [s]");
+  plt::ylabel("State");
   plt::save("simulation.png");
 }
 

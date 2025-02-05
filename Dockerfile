@@ -29,6 +29,9 @@ RUN apt-get update && \
 RUN wget -O - https://apt.kitware.com/keys/kitware-archive-latest.asc 2>/dev/null | gpg --dearmor - | tee /etc/apt/trusted.gpg.d/kitware.gpg >/dev/null
 RUN apt-add-repository "deb https://apt.kitware.com/ubuntu/ $(lsb_release -cs) main"
 
+# GCC
+RUN add-apt-repository ppa:ubuntu-toolchain-r/test
+
 ## Install dependencies
 RUN apt-get update && \
     apt-get install -y \
@@ -36,6 +39,8 @@ RUN apt-get update && \
     cmake-curses-gui \
     dirmngr \
     dotnet-sdk-8.0 \
+    g++-13 \
+    gcc-13 \
     git \
     jq \
     libgtest-dev \
@@ -54,19 +59,21 @@ RUN apt-get update && \
 ##  Install compiler alternatives
 RUN wget https://apt.llvm.org/llvm.sh && \
     chmod +x llvm.sh && \
-    ./llvm.sh 18 all
+    ./llvm.sh 19 all
 
-RUN update-alternatives --install /usr/bin/clang clang /usr/bin/clang-18 18
-RUN update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-18 18
-RUN update-alternatives --install /usr/bin/clangd clangd /usr/bin/clangd-18 18
-RUN update-alternatives --install /usr/bin/clang-format clang-format /usr/bin/clang-format-18 18
-RUN update-alternatives --install /usr/bin/clang-tidy clang-tidy /usr/bin/clang-tidy-18 18
+RUN update-alternatives --install /usr/bin/clang clang /usr/bin/clang-19 19
+RUN update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-19 19
+RUN update-alternatives --install /usr/bin/clangd clangd /usr/bin/clangd-19 19
+RUN update-alternatives --install /usr/bin/clang-format clang-format /usr/bin/clang-format-19 19
+RUN update-alternatives --install /usr/bin/clang-tidy clang-tidy /usr/bin/clang-tidy-19 19
+
+RUN update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-13 13
+RUN update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-13 13
 
 # Set compiler environment variables
 ENV CC="/usr/bin/clang"
 ENV CXX="/usr/bin/clang++"
 ENV CMAKE_GENERATOR="Ninja"
-
 
 
 ## Manage user
